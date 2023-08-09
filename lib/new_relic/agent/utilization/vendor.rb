@@ -63,7 +63,7 @@ module NewRelic
               false
             end
           rescue => e
-            NewRelic::Agent.logger.info("Metadata response: #{response}", e)
+            NewRelic::Agent.logger.info("Metadata response: #{JSON.parse(response.body)}", e)
             NewRelic::Agent.logger.error("Error occurred detecting: #{vendor_name}", e)
             record_supportability_metric
             false
