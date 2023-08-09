@@ -19,7 +19,7 @@ module NewRelic
 
         def prepare_response(response)
           body = JSON.parse(response.body)
-          body[MACH_TYPE] = trim_leading(body[MACH_TYPE])
+          body[MACH_TYPE] = body[MACH_TYPE].present? ? trim_leading(body[MACH_TYPE]) : ''
           body[ZONE] = trim_leading(body[ZONE])
           body
         end
